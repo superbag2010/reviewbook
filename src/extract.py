@@ -7,24 +7,24 @@ comparing search date,
 get new record from chorme search history of naver dictionary
 '''
 def getNewRecsCompDate(csvReader, rawSearchHistory):
-    # records added to rewordbook
+    # records added to reviewbook
     newRecs = []
 
     # skip field row
     next(csvReader)
 
-    # get latest date in old rewordbook
+    # get latest date in old reviewbook
     oldLatestSearchedDate = next(csvReader)[3]
     
     for rawRec in rawSearchHistory:
         # get searched date each search record
         searchedDate = datetime.datetime.fromtimestamp(rawRec['time_usec'] / 1e6).strftime('%Y-%m-%d %H:%M')
 
-        # if searched date is more recent than record in old rewordbook
+        # if searched date is more recent than record in old reviewbook
         if searchedDate > oldLatestSearchedDate:
             # if 'url of searched record' contain dictionary home url
             if userConfig.DIC_HOME_URL_NAVER in rawRec['url']:
-                # make record to add to new rewordbook
+                # make record to add to new reviewbook
                 newRec = [None]*4
                 # column1. memorized
                 newRec[0] = userConfig.NOT_MEMORIZED_WORD_SYMBOL
@@ -42,7 +42,7 @@ def getNewRecsCompDate(csvReader, rawSearchHistory):
                 # column4. date(convert epoch timestamp to readable date)
                 newRec[3] = searchedDate
 
-                # do duplication check before add to rewordbook
+                # do duplication check before add to reviewbook
                 isExist = False
                 for addedRec in newRecs:
                     if addedRec[1] == newRec[1]:
@@ -52,7 +52,7 @@ def getNewRecsCompDate(csvReader, rawSearchHistory):
                 if isExist == False:
                     newRecs.append(newRec)
         
-        # if aleary exist in rewordbook, skip
+        # if aleary exist in reviewbook, skip
         else:
             break
     
@@ -60,7 +60,7 @@ def getNewRecsCompDate(csvReader, rawSearchHistory):
 
 
 '''
-aling words in old rewordbook as symbol
+aling words in old reviewbook as symbol
 '''
 def getRecsAsMemorizedSymbol(csvReader):
     notMemorizedRecs = []
@@ -118,7 +118,7 @@ def getRecsAsMemorizedSymbol(csvReader):
     return notMemorizedRecs, excludedRecs, memorizedRecs, onceMemorizedRecs
 
 '''
-get records added to initial rewordbook
+get records added to initial reviewbook
 '''
 def getRecs(rawSearchHistory):
     recsToAdd = []

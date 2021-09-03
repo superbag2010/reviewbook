@@ -3,9 +3,9 @@ GOOGLE_ACCOUNT_HISTORY_URL=r"/Users/choeseungho/Desktop/google_drive/ja_dic/raw/
 
 ### output ###
 OUTPUT_PATH=r"/Users/choeseungho/Desktop/google_drive/ja_dic"
-REWORDBOOK_FILENAME="rewordbook"
+REVIEWBOOK_FILENAME="reviewbook"
 # For now, only csv is supported
-REWORDBOOK_FORMAT="csv"
+REVIEWBOOK_FORMAT="csv"
 
 ### backup ###
 DO_BACKUP=True
