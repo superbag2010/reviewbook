@@ -1,5 +1,5 @@
 ### input ###
-GOOGLE_ACCOUNT_HISTORY_URL=r"/Users/choeseungho/Desktop/google_drive/ja_dic/raw/BrowserHistory.json"
+GOOGLE_ACCOUNT_HISTORY_URL=r"/Users/choeseungho/Desktop/google_drive/ja_dic/BrowserHistory.json"
 
 ### output ###
 OUTPUT_PATH=r"/Users/choeseungho/Desktop/google_drive/ja_dic"
